@@ -20,16 +20,23 @@ def hangman():
 
     guessed_letters = set()
 
-    guessed_letter = input('guess a letter: ').upper()
+    while len(hidden_letters) > 0:
+        
+        print('guessed letters are', ' '.join(guessed_letters))
 
-    if guessed_letter in (alphabet_letters - guessed_letters):
-        guessed_letters.add(guessed_letter)
+        displayed_characters = [letter if letter in guessed_letters else '-' for letter in word]
+        print('current word is', ' '.join(displayed_characters))
 
-        if guessed_letter in hidden_letters:
-            hidden_letters.remove(guessed_letter)
-    
-    elif guessed_letter in guessed_letters:
-        print(f'you already guessed {guessed_letter}')
+        guessed_letter = input('guess a letter: ').upper()
 
-    else:
-        print('invalid character')
+        if guessed_letter in (alphabet_letters - guessed_letters):
+            guessed_letters.add(guessed_letter)
+
+            if guessed_letter in hidden_letters:
+                hidden_letters.remove(guessed_letter)
+        
+        elif guessed_letter in guessed_letters:
+            print(f'you already guessed {guessed_letter}')
+
+        else:
+            print('invalid character')
