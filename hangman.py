@@ -27,7 +27,7 @@ def hangman():
         displayed_characters = [letter if letter in guessed_letters else '-' for letter in word]
         print('current word is', ' '.join(displayed_characters))
 
-        guessed_letter = input('guess a letter: ').upper()
+        guessed_letter = input('guess (enter) a letter: \n').upper()
 
         if guessed_letter in (alphabet_letters - guessed_letters):
             guessed_letters.add(guessed_letter)
