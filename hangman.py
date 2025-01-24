@@ -40,3 +40,5 @@ def hangman():
 
         else:
             print('invalid character')
+
+hangman()
