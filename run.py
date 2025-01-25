@@ -31,7 +31,7 @@ def hangman():
         displayed_characters = [letter if letter in guessed_letters else '-' for letter in hidden_word]
         print('current word is', ' '.join(displayed_characters))
 
-        guessed_letter = input('guess (enter) a letter: \n').upper()
+        guessed_letter = input('guess (enter) a letter: ').upper()
 
         if guessed_letter in (alphabet_letters - guessed_letters):
             guessed_letters.add(guessed_letter)
@@ -45,5 +45,7 @@ def hangman():
         else:
             print('invalid character')
 
-if __name__ == '__main__':
-    hangman()
+    print(f'well done, you solved for {hidden_word}')
+
+#if __name__ == '__main__':
+hangman()
