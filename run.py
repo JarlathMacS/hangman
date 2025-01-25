@@ -45,4 +45,5 @@ def hangman():
         else:
             print('invalid character')
 
-hangman()
+if __name__ == '__main__':
+    hangman()
