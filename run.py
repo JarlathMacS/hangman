@@ -36,6 +36,9 @@ def hangman():
         if len(guessed_letters) > 0:
             print('guessed letters are', ' '.join(sorted_guessed_letters))
 
+        if lives == 6:
+            print(f'you have {lives} lives')
+
         displayed_characters = [letter if letter in guessed_letters else '-' for letter in hidden_word]
         print('word is', ' '.join(displayed_characters), '\n')
 
@@ -50,7 +53,7 @@ def hangman():
                 hidden_letters.remove(guessed_letter)
             else:
                 lives -= 1
-                print(f'you now have {lives} lives')
+                print(f'no {guessed_letter}, you now have {lives} lives')
         
         #if user guesses valid letter for second time and above
         elif guessed_letter in guessed_letters:
