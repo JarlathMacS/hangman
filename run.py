@@ -2,9 +2,10 @@
 # You can delete these comments, but do not change the name of this file
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
+import os
 import random
-from words import words
 import string
+from words import words
 
 def get_valid_word(words):
     """chooses a word at random from the list"""
@@ -36,7 +37,7 @@ def hangman():
         if len(guessed_letters) > 0:
             print('guessed letters are', ' '.join(sorted_guessed_letters))
 
-        if lives == 6:
+        if lives == 6:  #need to fix this
             print(f'you have {lives} lives')
 
         displayed_characters = [letter if letter in guessed_letters else '-' for letter in hidden_word]
@@ -53,7 +54,7 @@ def hangman():
                 hidden_letters.remove(guessed_letter)
             else:
                 lives -= 1
-                print(f'no {guessed_letter}, you now have {lives} lives')
+                print(f'no {guessed_letter}, you now have {lives} lives')   #2 e's for correct guesses?
         
         #if user guesses valid letter for second time and above
         elif guessed_letter in guessed_letters:
@@ -67,5 +68,15 @@ def hangman():
     else:
         print(f'well done, you solved for {hidden_word}')
 
+def main():
+    """
+    main function
+    clears terminal and calls hangman function
+    """
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+    hangman()
+
+main()
+
 #if __name__ == '__main__':
-hangman()
