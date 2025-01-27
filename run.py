@@ -24,7 +24,8 @@ def hangman():
 
     guessed_letters = set()
 
-    sorted_guessed_letters = list(guessed_letters).sort()
+    sorted_guessed_letters = list(guessed_letters)
+    sorted_guessed_letters.sort()
 
     while len(hidden_letters) > 0:
         
