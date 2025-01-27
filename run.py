@@ -26,10 +26,10 @@ def hangman():
 
     while len(hidden_letters) > 0:
         
-        print('guessed letters are', ' '.join(guessed_letters))
+        print('guessed letters are', ' '.join(guessed_letters)) #need to alphabetize this list
 
         displayed_characters = [letter if letter in guessed_letters else '-' for letter in hidden_word]
-        print('current word is', ' '.join(displayed_characters))
+        print('current word is', ' '.join(displayed_characters), '\n')
 
         guessed_letter = input('guess (enter) a letter: ').upper()
 
