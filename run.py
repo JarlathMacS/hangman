@@ -24,10 +24,9 @@ def hangman():
 
     guessed_letters = set()
 
-    sorted_guessed_letters = list(guessed_letters)
-    sorted_guessed_letters.sort()
-
     while len(hidden_letters) > 0:
+        sorted_guessed_letters = list(guessed_letters)
+        sorted_guessed_letters.sort()
         
         print('guessed letters are', ' '.join(sorted_guessed_letters)) #need to alphabetize this list
 
