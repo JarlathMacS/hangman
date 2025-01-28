@@ -30,39 +30,45 @@ def hangman():
 
     lives = 6
 
+    #hidden letters remain to be guessed, and user still alive
     while len(hidden_letters) > 0 and lives > 0:
-        sorted_guessed_letters = list(guessed_letters)
-        sorted_guessed_letters.sort()
+        guessed_letters_list = list(guessed_letters)
+        guessed_letters_list.sort()
         
-        if len(guessed_letters) > 0:
-            print('guessed letters are', ' '.join(sorted_guessed_letters))
-
-        if lives == 6:  #need to fix this
+        #only print '6 lives' at start of game
+        if lives == 6 and len(guessed_letters) == 0:
             print(f'you have {lives} lives')
+
+        #user has made a guess
+        if len(guessed_letters) > 0:
+            print('guessed letters are', ' '.join(guessed_letters_list))
 
         displayed_characters = [letter if letter in guessed_letters else '-' for letter in hidden_word]
         print('word is', ' '.join(displayed_characters), '\n')
 
         guessed_letter = input('guess a letter: ').upper()
         
-        #if user guesses valid letter for first time
+        #validation of input conditional statement start
+        #if user enters a valid, single letter, for the first time
         if guessed_letter in (alphabet_letters - guessed_letters):
             guessed_letters.add(guessed_letter)
 
-            #if user guesses letter within the hidden word
+            #if users' guess is a letter within the hidden word
             if guessed_letter in hidden_letters:
                 hidden_letters.remove(guessed_letter)
             else:
                 lives -= 1
                 print(f'no {guessed_letter}, you now have {lives} lives')   #2 e's for correct guesses?
         
-        #if user guesses valid letter for second time and above
+        #if user enters a valid, single letter, for the second time or more
         elif guessed_letter in guessed_letters:
             print(f'you already guessed {guessed_letter}')
 
+        #if user enters any invalid letter/s, or any other keyboard input/s, at any time
         else:
             print('invalid character')
 
+    #user either depleted the hidden letters, or they depleted their lives
     if lives == 0:
         print(f'you died, the word was {hidden_word}')
     else:
