@@ -6,6 +6,7 @@ import os
 import random
 import string
 from words import words
+from simple_term_menu import TerminalMenu
 
 def get_valid_word(words):
     """chooses a word at random from the list"""
@@ -81,8 +82,13 @@ def main():
     """
 
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    options = ['Play game', 'Show rules', 'Exit']
+    terminal_menu = TerminalMenu(options)
+    menu_entry_index = terminal_menu.show()
+    print(f'You have selected {options[menu_entry_index]}!')
+
     hangman()
 
-main()
-
-#if __name__ == '__main__':
+if __name__ == "__main__":
+    main()
