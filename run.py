@@ -84,10 +84,13 @@ def hangman():
         print(f'''{Fore.RED}{Back.WHITE}You have {lives} lives, you died{Style.RESET_ALL}\n\n''')
         print(f'''Guessed letters were {Fore.YELLOW}{' '.join(guessed_letters_list)}{Style.RESET_ALL}\n\n''')
         print(f'''Word was {Fore.GREEN}{' '.join(displayed_characters)}{Fore.WHITE}\n\n''')
-        print(f'''Solution is {Fore.GREEN}{Back.WHITE}{hidden_word}{Style.RESET_ALL}''')
+        print(f'''Solution was {Fore.GREEN}{Back.WHITE}{hidden_word}{Style.RESET_ALL}''')
         #print(f'You died, the word was {hidden_word}')
     else:
-        print(f'''Well done, you solved for {Fore.GREEN}{Back.WHITE}{hidden_word}{Style.RESET_ALL}''')
+        print(f'''{Fore.RED}{Back.WHITE}You have {lives} lives{Style.RESET_ALL}\n\n''')
+        print(f'''Guessed letters were {Fore.YELLOW}{' '.join(guessed_letters_list)}{Style.RESET_ALL}\n\n''')
+        print(f'''Word was {Fore.GREEN}{' '.join(displayed_characters)}{Fore.WHITE}\n\n''')
+        print(f'''{Fore.GREEN}{Back.WHITE}Well done, you solved for {hidden_word}{Style.RESET_ALL}''')
 
 def main():
     """
