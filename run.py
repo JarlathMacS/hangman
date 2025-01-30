@@ -92,6 +92,15 @@ def hangman():
         print(f'''Word was {Fore.GREEN}{' '.join(displayed_characters)}{Fore.WHITE}\n\n''')
         print(f'''{Fore.GREEN}{Back.WHITE}Well done, you solved for {hidden_word}{Style.RESET_ALL}''')
 
+def display_rules():
+    print(f'''
+    {Fore.YELLOW}[1] {Fore.BLUE}You get six (6) lives
+    {Fore.YELLOW}[2] {Fore.BLUE}Invalid entries don\'t count towards your lives
+    {Fore.YELLOW}[3] {Fore.BLUE}Repeated guesses don\'t count towards your lives
+    {Fore.YELLOW}[4] {Fore.BLUE}There are no spaces ( ) or hyphens (-) in the words
+    {Fore.YELLOW}[5] {Fore.BLUE}Have fun!
+    ''')
+
 def main():
     """
     main function
@@ -100,12 +109,30 @@ def main():
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
+    #Show welcome message
+    print(f'''
+    {Fore.CYAN}Welcome to my Hangman game!{Style.RESET_ALL}
+    ''')
+
     options = ['[1] Play game', '[2] Show rules', '[3] Exit']
     terminal_menu = TerminalMenu(options, title = 'Options')
-    menu_entry_index = terminal_menu.show()
+
+    end = False
+    while end == False:
+        menu_entry_index = terminal_menu.show()
+        options_choice = options[menu_entry_index]
+
+        if (options_choice == '[3] Exit'):
+            end = True
+        elif (options_choice == '[2] Show rules'):
+            display_rules()
+        else:
+            hangman()
+
+    #menu_entry_index = terminal_menu.show()
     #print(f'You have selected {options[menu_entry_index]}!')
 
-    hangman()
+    #hangman()
 
 if __name__ == "__main__":
     main()
