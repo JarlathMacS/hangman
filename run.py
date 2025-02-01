@@ -5,9 +5,10 @@
 import os
 import random
 import string
-from words import words
 from simple_term_menu import TerminalMenu
 from colorama import Fore, Back, Style
+from words import words
+
 
 def get_valid_word(words):
     """chooses a word at random from the list"""
@@ -43,7 +44,9 @@ def hangman():
         #only print '6 lives' at start of game
         #if lives == 6 and len(guessed_letters) == 0:
             #os.system('cls' if os.name == 'nt' else 'clear')
-        print(f'''{Fore.RED}{Back.WHITE}You have {lives} lives{Style.RESET_ALL}\n\n''')
+        print(f'''
+        {Fore.RED}{Back.WHITE}You have {lives} lives{Style.RESET_ALL}
+        \n\n''')
 
         #user has made a guess
         if len(guessed_letters) > 0:
@@ -123,6 +126,7 @@ def main():
         options_choice = options[menu_entry_index]
 
         if (options_choice == '[3] Exit'):
+            #message here
             end = True
         elif (options_choice == '[2] Show rules'):
             display_rules()
