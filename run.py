@@ -40,22 +40,22 @@ def hangman():
         guessed_letters_list.sort()
         
         print(f'''
-        {Fore.RED}{Back.WHITE}You have {lives} lives{Style.RESET_ALL}
-        \n''')
+        {Fore.RED}{Back.WHITE}You have {lives} lives remaining{Style.RESET_ALL}
+        ''')
 
         #user has made a guess
         if len(guessed_letters) > 0:
             print(f'''
-            Guessed letters are {Fore.YELLOW}{' '.join(guessed_letters_list)}
-            {Fore.WHITE}
-            \n''')
+        You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
+            {Style.RESET_ALL}
+            ''')
 
         displayed_characters = [letter if letter in guessed_letters 
         else '_' for letter in hidden_word]
 
         print(f'''
-        Word is {Fore.GREEN}{' '.join(displayed_characters)}{Fore.WHITE}
-        \n''')
+    The word is {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
+        ''')
 
         guessed_letter = input('Guess a letter: ').upper()
         
@@ -67,20 +67,24 @@ def hangman():
             #if users' guess is a letter within the hidden word
             if guessed_letter in hidden_letters:
                 os.system('cls' if os.name == 'nt' else 'clear')
+                print(f'''
+            {Fore.GREEN}Yes, there's {hidden_word.count(guessed_letter)} letter
+                {guessed_letter} in the word{Style.RESET_ALL}
+                ''')
                 hidden_letters.remove(guessed_letter)
             else:
                 lives -= 1
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(f'''
-                {Fore.RED}There is no letter {guessed_letter} in the word
-                \n''')
-                #2 e's for correct guesses?
+                {Fore.RED}Sorry, there's no letter {guessed_letter} in the word
+                {Style.RESET_ALL}\
+                ''')
         
         #if user enters a valid, single letter, for the second time or more
         elif guessed_letter in guessed_letters:
             os.system('cls' if os.name == 'nt' else 'clear')
             print(f'''
-            {Fore.BLUE}{Back.WHITE}You already guessed letter {guessed_letter}
+        {Fore.BLUE}{Back.WHITE}You have already guessed letter {guessed_letter}
             {Style.RESET_ALL}
             ''')
 
@@ -89,30 +93,26 @@ def hangman():
         else:
             os.system('cls' if os.name == 'nt' else 'clear')
             print(f'''
-            {Fore.RED}You have guessed an invalid character
-            \n''')
+{Fore.RED}You have guessed an invalid character.  Only letters A to Z are valid
+            ''')
 
     #user either depleted the hidden letters, or they depleted their lives
     if lives == 0:
-        #print(f'No {guessed_letter}')
         print(f'''
-        {Fore.RED}{Back.WHITE}You have {lives} lives, you died{Style.RESET_ALL}
-
-        Guessed letters were {Fore.YELLOW}{' '.join(guessed_letters_list)}
-
-        Word was {Fore.GREEN}{' '.join(displayed_characters)}{Fore.WHITE}
-
-        Answer was {Fore.GREEN}{Back.WHITE}{hidden_word}{Style.RESET_ALL}
+    {Fore.RED}{Back.WHITE}Sorry, you had {lives} lives remaining, so you died
+        {Style.RESET_ALL}
+        You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
+        {Style.RESET_ALL}
+    The word was {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
+        The answer was {Fore.GREEN}{Back.WHITE}{hidden_word}{Style.RESET_ALL}
         ''')
     else:
         print(f'''
-        {Fore.RED}{Back.WHITE}You have {lives} lives
-
-        Guessed letters were {Fore.YELLOW}{' '.join(guessed_letters_list)}
-
-        Word was {Fore.GREEN}{' '.join(displayed_characters)}{Fore.WHITE}
-
-        {Fore.GREEN}{Back.WHITE}Well done, you correctly answered {hidden_word}
+{Fore.RED}{Back.WHITE}You still had {lives} lives remaining{Style.RESET_ALL}
+        You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
+        {Style.RESET_ALL}
+        The word was {Fore.GREEN}{' '.join(displayed_characters)}
+{Back.WHITE}Well done, you correctly answered {hidden_word}{Style.RESET_ALL}
         ''')
 
 
@@ -124,9 +124,8 @@ def display_rules():
     {Fore.YELLOW}[3] {Fore.CYAN}Only the 26 alphabet letters (A to Z) are valid
     guesses
     {Fore.YELLOW}[4] {Fore.CYAN}You may only guess a single letter at a time
-    {Fore.YELLOW}[5] {Fore.CYAN}Invalid guesses don\'t count towards your lives
-    {Fore.YELLOW}[6] {Fore.CYAN}Repeated guesses don\'t count towards your
-    lives
+    {Fore.YELLOW}[5] {Fore.CYAN}Invalid guesses don't count towards your lives
+    {Fore.YELLOW}[6] {Fore.CYAN}Repeated guesses don't count towards your lives
     {Fore.YELLOW}[7] {Fore.CYAN}The hidden words are chosen at random by the
     computer
     {Fore.YELLOW}[8] {Fore.CYAN}There are no spaces ( ) or hyphens (-) in the
@@ -138,14 +137,16 @@ def display_rules():
 def main():
     """
     main function
-    clears terminal and calls hangman function
+    clears the terminal and calls the hangman and/or display_rules functions,
+    or exits the program
     """
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
     #Show welcome message
     print(f'''
-    {Fore.GREEN}Welcome to my Hangman game!
+{Fore.MAGENTA}
+Welcome to my Hangman game!
     ''')
 
     options = ['[1] Play game', '[2] Show rules', '[3] Exit']
@@ -157,11 +158,17 @@ def main():
         options_choice = options[menu_entry_index]
 
         if (options_choice == '[3] Exit'):
-            #message here
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print(f'''
+            {Fore.MAGENTA}
+Thank you for playing my Hangman game
+            ''')
             end = True
         elif (options_choice == '[2] Show rules'):
+            os.system('cls' if os.name == 'nt' else 'clear')
             display_rules()
         else:
+            os.system('cls' if os.name == 'nt' else 'clear')
             hangman()
 
 
