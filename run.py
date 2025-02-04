@@ -4,6 +4,7 @@
 import os
 import random
 import string
+from time import sleep
 from simple_term_menu import TerminalMenu
 from colorama import Fore, Back, Style
 from words import words_list
@@ -66,6 +67,7 @@ The word is {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
 
             # If users' guess is a letter within the hidden word
             if guessed_letter in hidden_letters:
+                sleep(1)
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(f'''
                 {Fore.GREEN}
@@ -75,6 +77,7 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
                 hidden_letters.remove(guessed_letter)
             else:
                 lives -= 1
+                sleep(1)
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(f'''
 {Fore.RED}Sorry, there's no letter {guessed_letter} in the word\
@@ -83,6 +86,7 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
         
         # If user enters a valid, single letter, for the second time or more
         elif guessed_letter in guessed_letters:
+            sleep(1)
             os.system('cls' if os.name == 'nt' else 'clear')
             print(f'''
 {Fore.BLUE}You have already guessed letter {guessed_letter}{Style.RESET_ALL}
@@ -91,6 +95,7 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
         # If user enters any invalid letter/s, or any other keyboard input/s,
         # at any time
         else:
+            sleep(1)
             os.system('cls' if os.name == 'nt' else 'clear')
             print(f'''
 {Fore.RED}You have guessed an invalid character.  Only letters A to Z are\
@@ -99,6 +104,7 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
 
     # User either depleted the hidden letters, or they depleted their lives
     if lives == 0:
+        sleep(1)
         print(f'''
 {Fore.RED}{Back.WHITE}Sorry, you had {lives} lives remaining, so you died\
 {Style.RESET_ALL}
@@ -110,6 +116,7 @@ The word was {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
 The answer was {Fore.GREEN}{Back.WHITE}{hidden_word}{Style.RESET_ALL}
         ''')
     else:
+        sleep(1)
         print(f'''
 {Fore.RED}{Back.WHITE}You still had {lives} lives remaining{Style.RESET_ALL}
 
@@ -140,6 +147,7 @@ program
 hidden words
 {Fore.YELLOW}[9] {Fore.CYAN}Have fun!{Style.RESET_ALL}
     ''')
+    sleep(1)
 
 
 def main():
@@ -156,6 +164,7 @@ def main():
 {Fore.MAGENTA}
 Welcome to my Hangman game!
     ''')
+    sleep(1)
 
     options = ['[1] Play game', '[2] Show rules', '[3] Exit']
     terminal_menu = TerminalMenu(options, title = 'Options')
@@ -173,11 +182,14 @@ Thank you for playing my Hangman game
             ''')
             end = True
         elif (options_choice == '[2] Show rules'):
+            sleep(1)
             os.system('cls' if os.name == 'nt' else 'clear')
             display_rules()
         else:
+            sleep(1)
             os.system('cls' if os.name == 'nt' else 'clear')
             hangman()
+            sleep(1)
 
 
 if __name__ == "__main__":
