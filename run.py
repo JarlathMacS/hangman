@@ -1,6 +1,7 @@
-# comment
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-
+"""
+Hangman game implementation by Jarlath
+4th February, 2025
+"""
 import os
 import random
 import string
@@ -23,7 +24,11 @@ def get_valid_word():
 
 
 def hangman():
-
+    """
+    This function contains the majority of the code which is executed, the
+    conditional statements which run the game, and the prompts or answers which
+    are output to the user via the terminal
+    """
     hidden_word = get_valid_word()
     # This set decreases in length as game is played
     hidden_letters = set(hidden_word)
@@ -66,7 +71,7 @@ The word is {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
             if guessed_letter in hidden_letters:
                 sleep(1)
                 os.system('cls' if os.name == 'nt' else 'clear')
-                print(f'''
+                print(f'''\
                 {Fore.GREEN}
 Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
  the word{Style.RESET_ALL}
@@ -94,7 +99,7 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
             os.system('cls' if os.name == 'nt' else 'clear')
             print(f'''
 {Fore.RED}You have guessed an invalid character.  Only letters A to Z are\
- valid, and only\none (1) letter at a time
+ valid, and only\none (1) letter at a time\
             ''')
     # User either depleted the hidden letters, or they depleted their lives
     if lives == 0:
@@ -123,6 +128,9 @@ Well done, you correctly answered {Back.WHITE}{hidden_word}{Style.RESET_ALL}
 
 
 def display_rules():
+    """
+    This function displays the gameplay rules to the terminal
+    """
     print(f'''
     {Fore.CYAN}
 Hangman Rules:
