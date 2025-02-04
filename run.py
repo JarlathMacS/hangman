@@ -6,22 +6,22 @@ import random
 import string
 from simple_term_menu import TerminalMenu
 from colorama import Fore, Back, Style
-from words import words
+from words import words_list
 
 
-def get_valid_word(words):
+def get_valid_word():
     """chooses a word at random from the list"""
-    word = random.choice(words)
+    word = random.choice(words_list)
 
     while '-' in word or ' ' in word:
-        word = random.choice(words)
+        word = random.choice(words_list)
 
     return word.upper()
 
 
 def hangman():
 
-    hidden_word = get_valid_word(words)
+    hidden_word = get_valid_word()
 
     #this set decreases in length as game is played
     hidden_letters = set(hidden_word)
