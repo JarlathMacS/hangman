@@ -1,4 +1,4 @@
-# You can delete these comments, but do not change the name of this file
+# comment
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 
 import os
@@ -23,17 +23,17 @@ def hangman():
 
     hidden_word = get_valid_word()
 
-    #this set decreases in length as game is played
+    # This set decreases in length as game is played
     hidden_letters = set(hidden_word)
 
     alphabet_letters = set(string.ascii_uppercase)
     
-    #this set increases in length as game is played
+    # This set increases in length as game is played
     guessed_letters = set()
 
     lives = 6
 
-    #hidden letters remain to be guessed, and user still alive
+    # Hidden letters remain to be guessed, and user still alive
     while len(hidden_letters) > 0 and lives > 0:
 
         guessed_letters_list = list(guessed_letters)
@@ -43,7 +43,7 @@ def hangman():
 {Fore.RED}{Back.WHITE}You have {lives} lives remaining{Style.RESET_ALL}
         ''')
 
-        #user has made a guess
+        # User has made a guess
         if len(guessed_letters) > 0:
             print(f'''
 You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
@@ -59,12 +59,12 @@ The word is {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
 
         guessed_letter = input('Guess a letter: ').upper()
         
-        #validation of input, conditional statement start
-        #if user enters a valid, single letter, for the first time
+        # Validation of input, conditional statement start
+        # If user enters a valid, single letter, for the first time
         if guessed_letter in (alphabet_letters - guessed_letters):
             guessed_letters.add(guessed_letter)
 
-            #if users' guess is a letter within the hidden word
+            # If users' guess is a letter within the hidden word
             if guessed_letter in hidden_letters:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(f'''
@@ -81,14 +81,14 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
 {Style.RESET_ALL}
                 ''')
         
-        #if user enters a valid, single letter, for the second time or more
+        # If user enters a valid, single letter, for the second time or more
         elif guessed_letter in guessed_letters:
             os.system('cls' if os.name == 'nt' else 'clear')
             print(f'''
 {Fore.BLUE}You have already guessed letter {guessed_letter}{Style.RESET_ALL}
             ''')
 
-        #if user enters any invalid letter/s, or any other keyboard input/s, 
+        # If user enters any invalid letter/s, or any other keyboard input/s,
         # at any time
         else:
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -97,7 +97,7 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
  valid, and only\none (1) letter at a time
             ''')
 
-    #user either depleted the hidden letters, or they depleted their lives
+    # User either depleted the hidden letters, or they depleted their lives
     if lives == 0:
         print(f'''
 {Fore.RED}{Back.WHITE}Sorry, you had {lives} lives remaining, so you died\
@@ -151,7 +151,7 @@ def main():
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
-    #Show welcome message
+    # Show a welcome message
     print(f'''
 {Fore.MAGENTA}
 Welcome to my Hangman game!
