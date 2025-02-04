@@ -11,7 +11,9 @@ from words import words_list
 
 
 def get_valid_word():
-    """chooses a word at random from the list"""
+    """
+    Chooses a word at random from the list
+    """
     word = random.choice(words_list)
 
     while '-' in word or ' ' in word:
@@ -23,17 +25,14 @@ def get_valid_word():
 def hangman():
 
     hidden_word = get_valid_word()
-
     # This set decreases in length as game is played
     hidden_letters = set(hidden_word)
 
     alphabet_letters = set(string.ascii_uppercase)
-    
     # This set increases in length as game is played
     guessed_letters = set()
 
     lives = 6
-
     # Hidden letters remain to be guessed, and user still alive
     while len(hidden_letters) > 0 and lives > 0:
 
@@ -59,12 +58,10 @@ The word is {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
         ''')
 
         guessed_letter = input('Guess a letter: ').upper()
-        
         # Validation of input, conditional statement start
         # If user enters a valid, single letter, for the first time
         if guessed_letter in (alphabet_letters - guessed_letters):
             guessed_letters.add(guessed_letter)
-
             # If users' guess is a letter within the hidden word
             if guessed_letter in hidden_letters:
                 sleep(1)
@@ -83,7 +80,6 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
 {Fore.RED}Sorry, there's no letter {guessed_letter} in the word\
 {Style.RESET_ALL}
                 ''')
-        
         # If user enters a valid, single letter, for the second time or more
         elif guessed_letter in guessed_letters:
             sleep(1)
@@ -91,7 +87,6 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
             print(f'''
 {Fore.BLUE}You have already guessed letter {guessed_letter}{Style.RESET_ALL}
             ''')
-
         # If user enters any invalid letter/s, or any other keyboard input/s,
         # at any time
         else:
@@ -101,7 +96,6 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
 {Fore.RED}You have guessed an invalid character.  Only letters A to Z are\
  valid, and only\none (1) letter at a time
             ''')
-
     # User either depleted the hidden letters, or they depleted their lives
     if lives == 0:
         sleep(1)
@@ -152,13 +146,10 @@ hidden words
 
 def main():
     """
-    main function
-    clears the terminal and calls the hangman and/or display_rules functions,
-    or exits the program
+    Main function which clears the terminal, calls the hangman and/or
+    display_rules functions, or exits the program
     """
-
     os.system('cls' if os.name == 'nt' else 'clear')
-
     # Show a welcome message
     print(f'''
 {Fore.MAGENTA}
