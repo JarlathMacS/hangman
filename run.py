@@ -91,7 +91,7 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
             os.system('cls' if os.name == 'nt' else 'clear')
             print(f'''
 {Fore.BLUE}You have already guessed letter {guessed_letter}.  You did not lose\
-     a life for this guess{Style.RESET_ALL}
+ a life for this guess{Style.RESET_ALL}
             ''')
         # If user enters any invalid letter/s, or any other keyboard input/s,
         # at any time
@@ -101,7 +101,7 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
             print(f'''
 {Fore.RED}You have guessed an invalid character.  Only letters A to Z are\
  valid, and\nonly one (1) letter at a time.  You did not lose a life for this\
-     guess\
+ guess\
             ''')
     # User either depleted the hidden letters, or they depleted their lives
     if lives == 0:
