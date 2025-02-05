@@ -184,7 +184,7 @@ Welcome to my Hangman game!
             os.system('cls' if os.name == 'nt' else 'clear')
             print(f'''
             {Fore.MAGENTA}
-Thank you for playing my Hangman game
+Thank you for playing my Hangman gam
             ''')
             end = True
         elif (options_choice == '[2] Show rules'):
