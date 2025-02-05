@@ -16,10 +16,9 @@ def get_valid_word():
     Chooses a word at random from the list
     """
     word = random.choice(words_list)
-
+    # Excludes any words with space or hyphen
     while '-' in word or ' ' in word:
         word = random.choice(words_list)
-
     return word.upper()
 
 
@@ -32,36 +31,29 @@ def hangman():
     hidden_word = get_valid_word()
     # This set decreases in length as game is played
     hidden_letters = set(hidden_word)
-
+    # Defines valid characters as A to Z only
     alphabet_letters = set(string.ascii_uppercase)
     # This set increases in length as game is played
     guessed_letters = set()
-
     lives = 6
     # Hidden letters remain to be guessed, and user still alive
     while len(hidden_letters) > 0 and lives > 0:
-
         guessed_letters_list = list(guessed_letters)
         guessed_letters_list.sort()
-
         print(f'''
 {Fore.RED}{Back.WHITE}You have {lives} lives remaining{Style.RESET_ALL}
         ''')
-
         # User has made a guess
         if len(guessed_letters) > 0:
             print(f'''
 You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
 {Style.RESET_ALL}
             ''')
-
         displayed_characters = [letter if letter in guessed_letters
                                 else '_' for letter in hidden_word]
-
         print(f'''
 The word is {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
         ''')
-
         guessed_letter = input('Guess a letter: ').upper()
         # Validation of input, conditional statement start
         # If user enters a valid, single letter, for the first time
@@ -108,28 +100,20 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
         sleep(1)
         print(f'''
 {Fore.RED}{Back.WHITE}Sorry, you had {lives} lives remaining, so you died
-{Style.RESET_ALL}
-
+{Style.RESET_ALL}\n
 You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
-{Style.RESET_ALL}
-
-
-The word was {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
-
+{Style.RESET_ALL}\n\n
+The word was {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}\n
 The answer was {Fore.GREEN}{Back.WHITE}{hidden_word}{Style.RESET_ALL}
         ''')
     else:
         sleep(1)
         print(f'''
-{Fore.RED}{Back.WHITE}You still had {lives} lives remaining{Style.RESET_ALL}
-
-
+{Fore.RED}{Back.WHITE}You still had {lives} lives remaining
+{Style.RESET_ALL}\n
 You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
-{Style.RESET_ALL}
-
-
-The word was {Fore.GREEN}{' '.join(displayed_characters)}
-
+{Style.RESET_ALL}\n\n
+The word was {Fore.GREEN}{' '.join(displayed_characters)}\n
 Well done, you correctly answered {Back.WHITE}{hidden_word}{Style.RESET_ALL}
         ''')
 
@@ -140,8 +124,7 @@ def display_rules():
     """
     print(f'''
     {Fore.CYAN}
-Hangman Rules:
-
+Hangman Rules:\n
 {Fore.YELLOW}[1] {Fore.CYAN}The aim of this classic game is to guess the
 hidden word before you lose all your lives
 {Fore.YELLOW}[2] {Fore.CYAN}You get six (6) lives at the start of the game
@@ -171,15 +154,12 @@ def main():
 Welcome to my Hangman game!
     ''')
     sleep(1)
-
     options = ['[1] Play game', '[2] Show rules', '[3] Exit']
     terminal_menu = TerminalMenu(options, title='Options')
-
     end = False
     while end is False:
         menu_entry_index = terminal_menu.show()
         options_choice = options[menu_entry_index]
-
         if (options_choice == '[3] Exit'):
             os.system('cls' if os.name == 'nt' else 'clear')
             print(f'''
