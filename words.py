@@ -1,6 +1,6 @@
 """
 Here is a list of words for use in the hangman game.
-Of course, this list can contain any number of elements, but for present
+Of course, this list can contain any number of elements, but for presen
 purposes, 10 will suffice
 """
 
