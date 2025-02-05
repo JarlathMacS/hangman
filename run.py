@@ -52,7 +52,7 @@ def hangman():
         if len(guessed_letters) > 0:
             print(f'''
 You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
-            {Style.RESET_ALL}
+{Style.RESET_ALL}
             ''')
 
         displayed_characters = [letter if letter in guessed_letters 
@@ -107,11 +107,13 @@ Yes, there's {hidden_word.count(guessed_letter)} of letter {guessed_letter} in\
     if lives == 0:
         sleep(1)
         print(f'''
-{Fore.RED}{Back.WHITE}Sorry, you had {lives} lives remaining, so you died\
+{Fore.RED}{Back.WHITE}Sorry, you had {lives} lives remaining, so you died
 {Style.RESET_ALL}
 
 You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
-        {Style.RESET_ALL}
+{Style.RESET_ALL}
+
+
 The word was {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
 
 The answer was {Fore.GREEN}{Back.WHITE}{hidden_word}{Style.RESET_ALL}
@@ -121,8 +123,11 @@ The answer was {Fore.GREEN}{Back.WHITE}{hidden_word}{Style.RESET_ALL}
         print(f'''
 {Fore.RED}{Back.WHITE}You still had {lives} lives remaining{Style.RESET_ALL}
 
+
 You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
-        {Style.RESET_ALL}
+{Style.RESET_ALL}
+
+
 The word was {Fore.GREEN}{' '.join(displayed_characters)}
 
 Well done, you correctly answered {Back.WHITE}{hidden_word}{Style.RESET_ALL}
