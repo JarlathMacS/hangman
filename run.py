@@ -43,7 +43,7 @@ def hangman():
 
         guessed_letters_list = list(guessed_letters)
         guessed_letters_list.sort()
-        
+
         print(f'''
 {Fore.RED}{Back.WHITE}You have {lives} lives remaining{Style.RESET_ALL}
         ''')
@@ -55,8 +55,8 @@ You guessed the letters {Fore.YELLOW}{' '.join(guessed_letters_list)}
 {Style.RESET_ALL}
             ''')
 
-        displayed_characters = [letter if letter in guessed_letters 
-        else '_' for letter in hidden_word]
+        displayed_characters = [letter if letter in guessed_letters
+                                else '_' for letter in hidden_word]
 
         print(f'''
 The word is {Fore.GREEN}{' '.join(displayed_characters)}{Style.RESET_ALL}
@@ -173,10 +173,10 @@ Welcome to my Hangman game!
     sleep(1)
 
     options = ['[1] Play game', '[2] Show rules', '[3] Exit']
-    terminal_menu = TerminalMenu(options, title = 'Options')
+    terminal_menu = TerminalMenu(options, title='Options')
 
     end = False
-    while end == False:
+    while end is False:
         menu_entry_index = terminal_menu.show()
         options_choice = options[menu_entry_index]
 
