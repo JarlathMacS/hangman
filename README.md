@@ -270,7 +270,7 @@ No errors were found:
 
       - ![Deploying Branch](documentation/deployment/hangman_heroku_deployed.png)
 
-  1. Click "Open app" to launch the application inside a web page.
+  1. Click "View app" to launch the application inside a web page.
 
 ## Credits
 
